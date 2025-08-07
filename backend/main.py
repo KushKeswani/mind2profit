@@ -12,12 +12,10 @@ app = FastAPI()
 
 # Import strategy API endpoints
 from strategy_api import app as strategy_app
-from manual_backtest_api import app as manual_backtest_app
 from beta_application_api import router as beta_application_router
 
 # Include strategy API routes
 app.include_router(strategy_app.router, prefix="/api")
-app.include_router(manual_backtest_app.router, prefix="/api")
 app.include_router(beta_application_router, prefix="/api")
 
 # Allow CORS for local frontend development
@@ -134,7 +132,136 @@ def economic_calendar():
             "forecast": event.get("Forecast"),
             "previous": event.get("Previous"),
         })
-    return {"events": events} 
+    return {"events": events}
+
+@app.get("/api/trading-topics")
+def trading_topics():
+    """
+    Get comprehensive trading topics and educational content.
+    """
+    topics = {
+        "fundamental_analysis": {
+            "title": "Fundamental Analysis",
+            "description": "Learn to analyze company financials, economic indicators, and market conditions",
+            "topics": [
+                "Financial Statement Analysis",
+                "Economic Indicators (GDP, CPI, Employment)",
+                "Industry Analysis",
+                "Company Valuation Methods",
+                "Earnings Reports and Guidance"
+            ],
+            "difficulty": "Intermediate",
+            "estimated_time": "4-6 weeks"
+        },
+        "technical_analysis": {
+            "title": "Technical Analysis",
+            "description": "Master chart patterns, indicators, and price action analysis",
+            "topics": [
+                "Chart Patterns (Head & Shoulders, Triangles)",
+                "Support and Resistance Levels",
+                "Moving Averages and Trend Analysis",
+                "RSI, MACD, and Other Indicators",
+                "Volume Analysis and Price Action"
+            ],
+            "difficulty": "Beginner to Advanced",
+            "estimated_time": "3-5 weeks"
+        },
+        "risk_management": {
+            "title": "Risk Management",
+            "description": "Essential strategies to protect your capital and maximize returns",
+            "topics": [
+                "Position Sizing and Money Management",
+                "Stop Loss and Take Profit Strategies",
+                "Risk-Reward Ratios",
+                "Portfolio Diversification",
+                "Emotional Control and Psychology"
+            ],
+            "difficulty": "All Levels",
+            "estimated_time": "2-3 weeks"
+        },
+        "options_trading": {
+            "title": "Options Trading",
+            "description": "Advanced strategies using options for hedging and speculation",
+            "topics": [
+                "Options Basics (Calls and Puts)",
+                "Option Greeks (Delta, Gamma, Theta, Vega)",
+                "Covered Calls and Protective Puts",
+                "Iron Condors and Butterflies",
+                "Options for Income Generation"
+            ],
+            "difficulty": "Advanced",
+            "estimated_time": "6-8 weeks"
+        },
+        "futures_trading": {
+            "title": "Futures Trading",
+            "description": "Trading futures contracts for commodities, indices, and currencies",
+            "topics": [
+                "Futures Contract Basics",
+                "Margin Requirements and Leverage",
+                "Commodity Trading (Oil, Gold, Corn)",
+                "Index Futures (ES, NQ, YM)",
+                "Futures for Hedging"
+            ],
+            "difficulty": "Intermediate to Advanced",
+            "estimated_time": "4-6 weeks"
+        },
+        "day_trading": {
+            "title": "Day Trading",
+            "description": "Intraday trading strategies and techniques",
+            "topics": [
+                "Day Trading Setup and Requirements",
+                "Scalping and Momentum Trading",
+                "Breakout and Breakdown Strategies",
+                "Market Opening and Closing Strategies",
+                "Risk Management for Day Trading"
+            ],
+            "difficulty": "Intermediate to Advanced",
+            "estimated_time": "3-4 weeks"
+        },
+        "swing_trading": {
+            "title": "Swing Trading",
+            "description": "Medium-term trading strategies holding positions for days to weeks",
+            "topics": [
+                "Swing Trading vs Day Trading",
+                "Trend Following Strategies",
+                "Mean Reversion Strategies",
+                "Entry and Exit Timing",
+                "Managing Swing Positions"
+            ],
+            "difficulty": "Intermediate",
+            "estimated_time": "3-4 weeks"
+        },
+        "psychology": {
+            "title": "Trading Psychology",
+            "description": "Master the mental aspects of trading for consistent success",
+            "topics": [
+                "Emotional Control and Discipline",
+                "Fear and Greed Management",
+                "Trading Journal and Self-Analysis",
+                "Building Confidence and Consistency",
+                "Overcoming Trading Biases"
+            ],
+            "difficulty": "All Levels",
+            "estimated_time": "Ongoing"
+        }
+    }
+    
+    return {
+        "message": "Trading Topics and Educational Content",
+        "total_topics": len(topics),
+        "topics": topics,
+        "recommended_order": [
+            "risk_management",
+            "technical_analysis", 
+            "fundamental_analysis",
+            "psychology",
+            "swing_trading",
+            "day_trading",
+            "futures_trading",
+            "options_trading"
+        ]
+    }
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

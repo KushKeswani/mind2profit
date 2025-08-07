@@ -109,6 +109,7 @@ Copy `backend/env_template.txt` to `backend/.env` and configure:
 ## 📚 Features
 
 - **Trading Strategies**: Backtest and deploy trading strategies
+- **Educational Content**: Comprehensive trading topics and learning resources
 - **Real-time Data**: Live market data integration
 - **User Management**: Authentication and user profiles
 - **Analytics**: Performance tracking and analysis

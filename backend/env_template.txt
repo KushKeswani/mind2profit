@@ -1,13 +1,23 @@
-# Copy this content to your .env file
+# Mind2Profit Environment Variables Template
+# Copy this file to .env and fill in your actual values
 
 # Supabase Configuration
-SUPABASE_URL=https://mpkznaypmzmtblymrwxk.supabase.co
-SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1wa3puYXlwbXptdGJseW1yd3hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1ODUzNzIsImV4cCI6MjA3MDE2MTM3Mn0.l4nwbrQ-kO9HNyIdj4zqemwSXaanGOwo3WdyR7VQGiM
+SUPABASE_URL=your_supabase_url_here
+SUPABASE_KEY=your_supabase_anon_key_here
 
-# Email Configuration (Optional - for notifications)
-SENDER_EMAIL=your-email@gmail.com
-SENDER_PASSWORD=your-app-password
-RECIPIENT_EMAIL=kushkeswani@mind2profit.com
+# API Keys (Optional - for additional features)
+FRED_API_KEY=your_fred_api_key_here
+TRADING_ECONOMICS_API_KEY=your_trading_economics_api_key_here
 
-# Debug Mode (Optional)
-DEBUG=true
+# Google Sheets API (Optional)
+GOOGLE_SHEETS_CREDENTIALS_FILE=path_to_your_credentials.json
+
+# Database Configuration (if using external database)
+DATABASE_URL=your_database_url_here
+
+# Security
+SECRET_KEY=your_secret_key_here
+JWT_SECRET=your_jwt_secret_here
+
+# Optional: Logging
+LOG_LEVEL=INFO

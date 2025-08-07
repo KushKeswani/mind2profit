@@ -1,0 +1,76 @@
+[
+  {
+    "id": "strategy_20250805_080759",
+    "strategy_name": "RSI Oversold Bounce",
+    "description": "Buy when RSI goes below 30 (oversold), sell when it reaches 50 or profit target.",
+    "symbol": "QQQ",
+    "start_date": "2025-01-01",
+    "end_date": "2025-03-01",
+    "timeframe": "1Min",
+    "risk_per_trade": 1.0,
+    "generated_code": "// Strategy code will be generated here",
+    "validation_results": {
+      "syntax_valid": true,
+      "has_required_imports": true,
+      "has_alpaca_api": true,
+      "has_technical_indicators": true,
+      "has_trade_logic": true,
+      "has_error_handling": true,
+      "issues": []
+    },
+    "summary": {
+      "strategy_name": "RSI Oversold Bounce",
+      "description": "Buy when RSI goes below 30 (oversold), sell when it reaches 50 or profit target.",
+      "generated_at": "2025-08-05T12:07:59.945Z",
+      "validation": {
+        "syntax_valid": true,
+        "has_required_imports": true,
+        "has_alpaca_api": true,
+        "has_technical_indicators": true,
+        "has_trade_logic": true,
+        "has_error_handling": true,
+        "issues": []
+      },
+      "status": "ready"
+    },
+    "saved_at": "2025-08-05T08:07:59.963746",
+    "last_modified": "2025-08-05T08:07:59.963750"
+  },
+  {
+    "id": "strategy_20250805_174804",
+    "strategy_name": "RSI Oversold Bounce",
+    "description": "Buy when RSI goes below 30 (oversold), sell when it reaches 50 or profit target.",
+    "symbol": "QQQ",
+    "start_date": "2025-01-01",
+    "end_date": "2025-03-01",
+    "timeframe": "1Min",
+    "risk_per_trade": 1.0,
+    "generated_code": "// Strategy code will be generated here",
+    "validation_results": {
+      "syntax_valid": true,
+      "has_required_imports": true,
+      "has_alpaca_api": true,
+      "has_technical_indicators": true,
+      "has_trade_logic": true,
+      "has_error_handling": true,
+      "issues": []
+    },
+    "summary": {
+      "strategy_name": "RSI Oversold Bounce",
+      "description": "Buy when RSI goes below 30 (oversold), sell when it reaches 50 or profit target.",
+      "generated_at": "2025-08-05T21:48:03.976Z",
+      "validation": {
+        "syntax_valid": true,
+        "has_required_imports": true,
+        "has_alpaca_api": true,
+        "has_technical_indicators": true,
+        "has_trade_logic": true,
+        "has_error_handling": true,
+        "issues": []
+      },
+      "status": "ready"
+    },
+    "saved_at": "2025-08-05T17:48:04.024160",
+    "last_modified": "2025-08-05T17:48:04.024163"
+  }
+]

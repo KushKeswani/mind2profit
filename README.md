@@ -1,127 +1,138 @@
 # Mind2Profit - Trading Platform
 
-A comprehensive trading platform built with React frontend and FastAPI backend, featuring automated backtesting, manual backtesting, and beta tester applications.
+A comprehensive trading platform built with React/TypeScript frontend and FastAPI backend.
 
-## 🚀 Features
-
-### Frontend (React + TypeScript)
-- **Coming Soon Page**: Landing page with countdown to launch
-- **About Page**: Detailed information about the platform and creator
-- **Beta Tester Application**: Form for potential beta testers to apply
-- **Responsive Design**: Modern UI with Tailwind CSS and Shadcn components
-- **Authentication System**: Protected routes for paid users
-
-### Backend (FastAPI + Python)
-- **Automated Backtesting**: Multiple trading strategies (MACD, RSI, Bollinger Bands, etc.)
-- **Manual Backtesting**: Custom strategy testing with Alpaca API
-- **Beta Application System**: Supabase integration for storing applications
-- **Economic Calendar**: Market data and economic events
-- **Strategy Management**: Save, load, and compare trading strategies
-
-## 🛠️ Tech Stack
-
-### Frontend
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- Shadcn UI
-- React Router DOM
-- Lucide React Icons
-
-### Backend
-- FastAPI
-- Python 3.9
-- Uvicorn
-- Pandas
-- NumPy
-- Technical Analysis Library
-- Alpaca API
-- Supabase
-- YFinance
-
-## 📦 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+
+- Node.js 18+ 
 - Python 3.9+
 - Git
 
-### Frontend Setup
-```bash
-cd WEBSITE/trader-os-companion-main
-npm install
-npm run dev
-```
-
 ### Backend Setup
-```bash
-cd backend
-python -m venv backend-venv
-source backend-venv/bin/activate  # On Windows: backend-venv\Scripts\activate
-pip install -r requirements.txt
-python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
 
-## 🔧 Environment Variables
+1. **Navigate to backend directory:**
+   ```bash
+   cd backend
+   ```
 
-Create a `.env` file in the backend directory:
+2. **Create virtual environment:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-```env
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-SENDER_EMAIL=your_email@gmail.com
-SENDER_PASSWORD=your_app_password
-RECIPIENT_EMAIL=admin@mind2profit.com
-DEBUG=true
-```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 🚀 Deployment
+4. **Set up environment variables:**
+   ```bash
+   cp env_template.txt .env
+   # Edit .env with your actual API keys
+   ```
 
-### Frontend (Vercel)
-1. Push code to GitHub
-2. Connect repository to Vercel
-3. Set environment variables in Vercel dashboard
-4. Deploy
+5. **Start the backend:**
+   ```bash
+   python3 -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+   ```
 
-### Backend (Railway/Render)
-1. Connect GitHub repository
-2. Set environment variables
-3. Deploy
+### Frontend Setup
+
+1. **Navigate to frontend directory:**
+   ```bash
+   cd WEBSITE/mind2profit-companion-main
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser:**
+   Navigate to `http://localhost:8080`
 
 ## 📁 Project Structure
 
 ```
-TRADEROS/
+mind2profit-clean/
 ├── backend/                 # FastAPI backend
-│   ├── main.py             # Main application entry
-│   ├── requirements.txt     # Python dependencies
-│   ├── strategy_api.py     # Automated backtesting
-│   ├── manual_backtest_api.py  # Manual backtesting
-│   ├── beta_application_api.py  # Beta tester applications
-│   └── supabase_api.py     # Supabase integration
-├── WEBSITE/
-│   └── trader-os-companion-main/  # React frontend
-│       ├── src/
-│       │   ├── pages/      # React pages
-│       │   ├── components/ # UI components
-│       │   └── contexts/   # React contexts
-│       └── package.json
-└── README.md
+│   ├── main.py             # Main application entry point
+│   ├── requirements.txt    # Python dependencies
+│   ├── env_template.txt   # Environment variables template
+│   └── ...
+├── WEBSITE/               # React frontend
+│   └── mind2profit-companion-main/
+│       ├── src/           # React components
+│       ├── package.json   # Node.js dependencies
+│       └── ...
+├── CALANDER/             # Calendar resources
+├── OG WEBSITE/           # Original website assets
+└── README.md            # This file
 ```
 
-## 🎯 Current Status
+## 🔧 Configuration
 
-- ✅ Frontend: Coming Soon page, About page, Beta application form
-- ✅ Backend: Automated backtesting, manual backtesting, Supabase integration
-- ✅ Beta Application System: Working with Supabase database
-- 🔄 Deployment: Ready for Vercel deployment
+### Environment Variables
 
-## 📞 Contact
+Copy `backend/env_template.txt` to `backend/.env` and configure:
 
-- Email: kushkeswani@mind2profit.com
-- Platform: Mind2Profit
+- `SUPABASE_URL`: Your Supabase project URL
+- `SUPABASE_KEY`: Your Supabase anonymous key
+- `FRED_API_KEY`: Federal Reserve Economic Data API key (optional)
+- `TRADING_ECONOMICS_API_KEY`: Trading Economics API key (optional)
+
+### API Keys Setup
+
+1. **Supabase**: Create a project at [supabase.com](https://supabase.com)
+2. **FRED API**: Get free API key at [fred.stlouisfed.org](https://fred.stlouisfed.org)
+3. **Trading Economics**: Get API key at [tradingeconomics.com](https://tradingeconomics.com)
+
+## 🚀 Deployment
+
+### Backend Deployment
+- **Heroku**: Use the `Procfile` in the backend directory
+- **Railway**: Connect your GitHub repository
+- **Vercel**: Use the serverless functions approach
+
+### Frontend Deployment
+- **Vercel**: Connect your GitHub repository
+- **Netlify**: Deploy from the `WEBSITE/mind2profit-companion-main` directory
+- **GitHub Pages**: Build and deploy the dist folder
+
+## 📚 Features
+
+- **Trading Strategies**: Backtest and deploy trading strategies
+- **Real-time Data**: Live market data integration
+- **User Management**: Authentication and user profiles
+- **Analytics**: Performance tracking and analysis
+- **Calendar Integration**: Economic calendar and events
+- **AI Integration**: AI-powered trading insights
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
 
 ## 📄 License
 
-This project is proprietary software. All rights reserved.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Links
+
+- [Live Demo](https://mind2profit.com)
+- [Documentation](https://docs.mind2profit.com)
+- [API Reference](https://api.mind2profit.com/docs)
+
+## 📞 Support
+
+For support, email support@mind2profit.com or create an issue in this repository.

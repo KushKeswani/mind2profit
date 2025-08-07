@@ -1,0 +1,62 @@
+[
+  {
+    "uuid": "test-123",
+    "name": "Test Strategy",
+    "description": "A test strategy",
+    "entryConditions": {
+      "long": [
+        "test"
+      ],
+      "short": [
+        "test"
+      ]
+    },
+    "riskManagement": {
+      "stopLoss": "test",
+      "takeProfit": "test",
+      "positionSize": "test"
+    },
+    "explanation": "Test explanation",
+    "author": "Test User",
+    "createdAt": "2025-01-01T00:00:00Z",
+    "performance": {
+      "winRate": 65.0,
+      "totalReturn": 2.2,
+      "maxDrawdown": -1.27,
+      "sharpeRatio": 1.85
+    },
+    "published_at": "2025-08-05T07:40:08.955807"
+  },
+  {
+    "uuid": "623081c3-aa9c-4d34-9f00-263b4814609d",
+    "name": "BOS + FVG Strategy",
+    "description": "Break of Structure combined with Fair Value Gap entries for high-probability setups.",
+    "entryConditions": {
+      "long": [
+        "Price breaks above resistance level",
+        "Volume is above average",
+        "RSI is not overbought (below 70)"
+      ],
+      "short": [
+        "Price breaks below support level",
+        "Volume is above average",
+        "RSI is not oversold (above 30)"
+      ]
+    },
+    "riskManagement": {
+      "stopLoss": "1.5% below entry price for long positions, 1.5% above for short positions",
+      "takeProfit": "3% above entry price for long positions, 3% below for short positions",
+      "positionSize": "1% of account per trade (conservative)"
+    },
+    "explanation": "This strategy uses technical analysis to identify high-probability trading opportunities with proper risk management.",
+    "author": "Mind2Profit User",
+    "createdAt": "2025-08-06T17:32:26.711Z",
+    "performance": {
+      "winRate": 64.05731517858996,
+      "totalReturn": 5.209809588325183,
+      "maxDrawdown": -1.5,
+      "sharpeRatio": 1.7
+    },
+    "published_at": "2025-08-06T13:32:26.728087"
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "id": "app_1_20250807_150346",
+    "timestamp": "2025-08-07T15:03:46.650896",
+    "application": {
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test@example.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Psychology",
+      "expectations": "Better tools",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_2_20250807_150920",
+    "timestamp": "2025-08-07T15:09:20.037357",
+    "application": {
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test2@example.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Psychology",
+      "expectations": "Better tools",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_3_20250807_150925",
+    "timestamp": "2025-08-07T15:09:25.851265",
+    "application": {
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test3@example.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Psychology",
+      "expectations": "Better tools",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_4_20250807_151614",
+    "timestamp": "2025-08-07T15:16:14.241261",
+    "application": {
+      "firstName": "Kush",
+      "lastName": "Keswani",
+      "email": "kushkeswani@mind2profit.com",
+      "tradingExperience": "advanced",
+      "tradingStyle": "swing-trading",
+      "currentTools": "TradingView, ThinkorSwim",
+      "painPoints": "Psychology and risk management",
+      "expectations": "Better trading psychology tools",
+      "timeCommitment": "5-plus-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "@mind2profit",
+      "additionalInfo": "Testing the beta application system"
+    }
+  },
+  {
+    "id": "app_5_20250807_151819",
+    "timestamp": "2025-08-07T15:18:19.782051",
+    "application": {
+      "firstName": "Test",
+      "lastName": "Supabase",
+      "email": "test@supabase.com",
+      "tradingExperience": "advanced",
+      "tradingStyle": "swing-trading",
+      "currentTools": "",
+      "painPoints": "Testing Supabase",
+      "expectations": "Better tools",
+      "timeCommitment": "5-plus-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_6_20250807_151829",
+    "timestamp": "2025-08-07T15:18:29.025680",
+    "application": {
+      "firstName": "Final",
+      "lastName": "Test",
+      "email": "final@test.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Final RLS test",
+      "expectations": "Working Supabase",
+      "timeCommitment": "1-2-hours",
+      "deviceAccess": [
+        "desktop"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_7_20250807_155936",
+    "timestamp": "2025-08-07T15:59:36.723077",
+    "application": {
+      "firstName": "RLS",
+      "lastName": "Fixed",
+      "email": "rls@fixed.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "scalping",
+      "currentTools": "",
+      "painPoints": "Testing fixed RLS",
+      "expectations": "Should work now",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_8_20250807_160017",
+    "timestamp": "2025-08-07T16:00:17.119621",
+    "application": {
+      "firstName": "RLS",
+      "lastName": "Fixed",
+      "email": "rls@fixed.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "scalping",
+      "currentTools": "",
+      "painPoints": "Testing fixed RLS",
+      "expectations": "Should work now",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_9_20250807_160030",
+    "timestamp": "2025-08-07T16:00:30.060464",
+    "application": {
+      "firstName": "Test",
+      "lastName": "Supabase",
+      "email": "test@supabase.com",
+      "tradingExperience": "advanced",
+      "tradingStyle": "swing-trading",
+      "currentTools": "",
+      "painPoints": "Testing Supabase",
+      "expectations": "Better tools",
+      "timeCommitment": "5-plus-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_10_20250807_160051",
+    "timestamp": "2025-08-07T16:00:51.692265",
+    "application": {
+      "firstName": "Fresh",
+      "lastName": "Test",
+      "email": "fresh@test.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Testing fresh backend",
+      "expectations": "Should work with Supabase",
+      "timeCommitment": "1-2-hours",
+      "deviceAccess": [
+        "desktop"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_11_20250807_161438",
+    "timestamp": "2025-08-07T16:14:38.392646",
+    "application": {
+      "firstName": "Table",
+      "lastName": "Fixed",
+      "email": "table@fixed.com",
+      "tradingExperience": "intermediate",
+      "tradingStyle": "swing-trading",
+      "currentTools": "",
+      "painPoints": "Testing new table",
+      "expectations": "Should work now",
+      "timeCommitment": "3-5-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_12_20250807_161754",
+    "timestamp": "2025-08-07T16:17:54.069570",
+    "application": {
+      "firstName": "Final",
+      "lastName": "Test",
+      "email": "final@test.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Testing fixed policy",
+      "expectations": "Should work now",
+      "timeCommitment": "1-2-hours",
+      "deviceAccess": [
+        "desktop"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_13_20250807_161812",
+    "timestamp": "2025-08-07T16:18:12.846176",
+    "application": {
+      "firstName": "Supabase",
+      "lastName": "Working",
+      "email": "supabase@working.com",
+      "tradingExperience": "advanced",
+      "tradingStyle": "swing-trading",
+      "currentTools": "",
+      "painPoints": "Testing fresh backend",
+      "expectations": "Should save to Supabase",
+      "timeCommitment": "5-plus-hours",
+      "deviceAccess": [
+        "desktop",
+        "mobile"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  },
+  {
+    "id": "app_14_20250807_162206",
+    "timestamp": "2025-08-07T16:22:06.152095",
+    "application": {
+      "firstName": "Test",
+      "lastName": "ID",
+      "email": "test@id.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "day-trading",
+      "currentTools": "",
+      "painPoints": "Testing ID field",
+      "expectations": "Should work",
+      "timeCommitment": "1-2-hours",
+      "deviceAccess": [
+        "desktop"
+      ],
+      "socialMedia": "",
+      "additionalInfo": ""
+    }
+  }
+]

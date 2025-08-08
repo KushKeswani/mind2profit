@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from typing import Optional
 import yfinance as yf
 from datetime import datetime, timedelta
@@ -307,6 +308,17 @@ def get_waitlist():
         }
     except Exception as e:
         return {"error": f"Server error: {str(e)}"}
+
+@app.get("/admin/waitlist")
+def waitlist_admin():
+    """
+    Serve the waitlist admin page
+    """
+    try:
+        with open("waitlist_admin.html", "r") as f:
+            return HTMLResponse(content=f.read())
+    except FileNotFoundError:
+        return {"error": "Admin page not found"}
 
 if __name__ == "__main__":
     import uvicorn

@@ -288,5 +288,46 @@
       "socialMedia": "",
       "additionalInfo": ""
     }
+  },
+  {
+    "id": "app_15_20250808_100716",
+    "timestamp": "2025-08-08T10:07:16.655222",
+    "application": {
+      "firstName": "adwad",
+      "lastName": "dwadaw",
+      "email": "bodied.anybody-4v@icloud.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "swing-trading",
+      "currentTools": "dwadwa",
+      "painPoints": "dwadaw",
+      "expectations": "dwadaw",
+      "timeCommitment": "5-10-hours",
+      "deviceAccess": [
+        "desktop"
+      ],
+      "socialMedia": "dwadaw",
+      "additionalInfo": "this goes to sup abase"
+    }
+  },
+  {
+    "id": "app_16_20250808_102052",
+    "timestamp": "2025-08-08T10:20:52.115523",
+    "application": {
+      "firstName": "daw",
+      "lastName": "dwa",
+      "email": "bodied.anybody-4v@icloud.com",
+      "tradingExperience": "beginner",
+      "tradingStyle": "day-trading",
+      "currentTools": "dadwa",
+      "painPoints": "wadawdwa",
+      "expectations": "dwadawdwadaw",
+      "timeCommitment": "5-10-hours",
+      "deviceAccess": [
+        "desktop",
+        "multiple"
+      ],
+      "socialMedia": "dwadawd",
+      "additionalInfo": "wadawd"
+    }
   }
 ]

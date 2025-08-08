@@ -13,6 +13,7 @@ app = FastAPI()
 # Import strategy API endpoints
 from strategy_api import app as strategy_app
 from beta_application_api import router as beta_application_router
+from supabase_api import insert_waitlist_email, get_waitlist_emails
 
 # Include strategy API routes
 app.include_router(strategy_app.router, prefix="/api")
@@ -261,6 +262,51 @@ def trading_topics():
             "options_trading"
         ]
     }
+
+from pydantic import BaseModel
+
+class WaitlistRequest(BaseModel):
+    email: str
+
+@app.post("/api/waitlist")
+def add_to_waitlist(request: WaitlistRequest):
+    """
+    Add an email to the waitlist
+    """
+    try:
+        email = request.email
+        if not email or not "@" in email:
+            return {"error": "Valid email is required"}
+        
+        # Insert into Supabase
+        result = insert_waitlist_email(email)
+        
+        if result:
+            return {
+                "success": True,
+                "message": "Successfully added to waitlist",
+                "email": email
+            }
+        else:
+            return {"error": "Failed to add to waitlist"}
+            
+    except Exception as e:
+        return {"error": f"Server error: {str(e)}"}
+
+@app.get("/api/waitlist")
+def get_waitlist():
+    """
+    Get all waitlist emails (admin only)
+    """
+    try:
+        emails = get_waitlist_emails()
+        return {
+            "success": True,
+            "count": len(emails),
+            "emails": emails
+        }
+    except Exception as e:
+        return {"error": f"Server error: {str(e)}"}
 
 if __name__ == "__main__":
     import uvicorn

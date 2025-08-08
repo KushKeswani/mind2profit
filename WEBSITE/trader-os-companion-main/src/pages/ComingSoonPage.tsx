@@ -5,12 +5,60 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, Brain, TrendingUp, Zap, Shield, Users, BarChart3, Clock, Target, Mail, CheckCircle, Calendar, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const ComingSoonPage = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features-section');
     if (featuresSection) {
       featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes('@')) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Success!",
+          description: "You've been added to the waitlist. We'll notify you when we launch!",
+        });
+        setEmail("");
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to join waitlist. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -69,16 +117,23 @@ const ComingSoonPage = () => {
 
         {/* Email Signup */}
         <div className="max-w-md mx-auto mb-12">
-          <div className="flex space-x-2">
+          <form onSubmit={handleEmailSubmit} className="flex space-x-2">
             <Input 
               type="email" 
               placeholder="Enter your email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-white/10 border-white/20 text-white placeholder-gray-400"
+              required
             />
-            <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-              Notify Me
+            <Button 
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-50"
+            >
+              {isSubmitting ? "Joining..." : "Notify Me"}
             </Button>
-          </div>
+          </form>
         </div>
 
         {/* Beta Tester CTA */}

@@ -170,3 +170,54 @@ def delete_beta_application(application_id: str) -> bool:
     except Exception as e:
         print(f"Error deleting application from Supabase: {e}")
         return False
+
+def insert_waitlist_email(email: str) -> dict:
+    """Insert a new email into the waitlist table"""
+    try:
+        supabase = get_supabase_client()
+        if not supabase:
+            print("Supabase not configured. Waitlist emails will be saved to file instead.")
+            return None
+        
+        # Prepare data for insertion
+        data = {
+            'email': email,
+            'subscribed_at': datetime.now().isoformat(),
+            'status': 'active'
+        }
+        
+        # Insert into waitlist table
+        result = supabase.table('waitlist').insert(data).execute()
+        
+        if result.data and len(result.data) > 0:
+            inserted_record = result.data[0]
+            record_id = inserted_record.get('id')
+            print(f"Waitlist email inserted into Supabase: {record_id}")
+            return inserted_record
+        else:
+            print("Failed to insert waitlist email into Supabase")
+            return None
+            
+    except Exception as e:
+        print(f"Error inserting waitlist email into Supabase: {e}")
+        return None
+
+def get_waitlist_emails() -> list:
+    """Get all waitlist emails from Supabase"""
+    try:
+        supabase = get_supabase_client()
+        if not supabase:
+            print("Supabase not configured. Returning empty list.")
+            return []
+        
+        # Get all waitlist emails, ordered by subscribed_at desc
+        result = supabase.table('waitlist').select('*').order('subscribed_at', desc=True).execute()
+        
+        if result.data:
+            return result.data
+        else:
+            return []
+            
+    except Exception as e:
+        print(f"Error getting waitlist emails from Supabase: {e}")
+        return []

@@ -54,13 +54,13 @@ const ComingSoonPage = () => {
           </span>
         </h1>
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-          Mind2Profit is launching by the end of 2025. Get early access and be among the first to experience the next generation of trading psychology and strategy tools.
+          Mind2Profit is launching in October 2025. Get early access and be among the first to experience the next generation of trading education, psychology tools, and strategy development.
         </p>
         
         {/* Countdown */}
         <div className="mb-12">
           <div className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Launch Date: December 31, 2025
+            Launch Date: October 2025
           </div>
           <p className="text-gray-300 text-lg">
             Join the waitlist and get notified when we launch
@@ -101,7 +101,7 @@ const ComingSoonPage = () => {
             What's Coming
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            A comprehensive suite of tools designed by traders, for traders.
+            A comprehensive suite of educational tools and trading resources designed by traders, for traders.
           </p>
         </div>
         
@@ -126,14 +126,14 @@ const ComingSoonPage = () => {
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
-                  <BarChart3 className="h-6 w-6 text-white" />
+                  <BookOpen className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-white">Manual Backtesting</CardTitle>
+                <CardTitle className="text-white">Trading Education</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Test your strategies with historical data and real market conditions.
+                Comprehensive learning resources covering technical analysis, risk management, and trading psychology.
               </CardDescription>
             </CardContent>
           </Card>
@@ -211,7 +211,7 @@ const ComingSoonPage = () => {
             Built by Traders, for Traders
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Every feature is designed from real trading experience and pain points.
+            Every feature is designed from real trading experience, educational needs, and common pain points.
           </p>
         </div>
         

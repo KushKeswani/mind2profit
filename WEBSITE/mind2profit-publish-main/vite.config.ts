@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     proxy: {
-      '/api': 'http://localhost:8000'
+      '/api': process.env.VITE_API_URL || 'http://localhost:8000'
     }
   },
   plugins: [

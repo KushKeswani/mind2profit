@@ -50,7 +50,8 @@ export const CalendarModule = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    fetch("http://localhost:8000/api/economic-data")
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    fetch(`${apiUrl}/api/economic-data`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -83,7 +84,8 @@ export const CalendarModule = () => {
   useEffect(() => {
     setUpcomingLoading(true);
     setUpcomingError(null);
-    fetch("http://localhost:8000/api/economic-calendar")
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    fetch(`${apiUrl}/api/economic-calendar`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {

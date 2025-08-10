@@ -156,7 +156,7 @@ const ComingSoonPage = () => {
             What's Coming
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            A comprehensive suite of educational tools and trading resources designed by traders, for traders.
+            A comprehensive suite of educational tools and trading resources designed to elevate your trading journey.
           </p>
         </div>
         

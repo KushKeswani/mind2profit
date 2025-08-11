@@ -93,30 +93,49 @@ const ComingSoonPage = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <Badge variant="secondary" className="mb-4 bg-purple-100 text-purple-800">
-          🚀 Coming Soon
+          🚀 Launching October 2025
         </Badge>
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-          The Future of
+          Master Trading with
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            {" "}Trading Tools
+            {" "}AI-Powered Tools
           </span>
         </h1>
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-          Mind2Profit is launching in October 2025. Get early access and be among the first to experience the next generation of trading education, psychology tools, and strategy development.
+          Transform your trading with Mind2Profit's comprehensive suite of AI strategy tools, psychology coaching, and educational resources. Join thousands of traders who are already on the waitlist.
         </p>
         
-        {/* Countdown */}
+        {/* Enhanced Countdown */}
         <div className="mb-12">
           <div className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Launch Date: October 2025
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              October 2025
+            </span>
           </div>
-          <p className="text-gray-300 text-lg">
-            Join the waitlist and get notified when we launch
+          <p className="text-gray-300 text-lg mb-4">
+            Be among the first to experience the future of trading
           </p>
+          <div className="flex justify-center space-x-4 text-sm text-gray-400">
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="h-4 w-4 text-green-400" />
+              <span>AI Strategy Generation</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="h-4 w-4 text-green-400" />
+              <span>Psychology Coaching</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="h-4 w-4 text-green-400" />
+              <span>Advanced Backtesting</span>
+            </div>
+          </div>
         </div>
 
-        {/* Email Signup */}
+        {/* Enhanced Email Signup */}
         <div className="max-w-md mx-auto mb-12">
+          <p className="text-gray-300 mb-4 text-sm">
+            Join 500+ traders already on the waitlist
+          </p>
           <form onSubmit={handleEmailSubmit} className="flex space-x-2">
             <Input 
               type="email" 
@@ -131,19 +150,19 @@ const ComingSoonPage = () => {
               disabled={isSubmitting}
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-50"
             >
-              {isSubmitting ? "Joining..." : "Notify Me"}
+              {isSubmitting ? "Joining..." : "Get Early Access"}
             </Button>
           </form>
         </div>
 
-        {/* Beta Tester CTA */}
+        {/* Enhanced Beta Tester CTA */}
         <div className="mb-12">
           <p className="text-gray-300 mb-4">
-            Want to help shape the future? Apply to become a beta tester!
+            Want exclusive access and help shape the future of trading tools?
           </p>
           <Link to="/beta">
             <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-              Become a Beta Tester
+              Apply for Beta Access
             </Button>
           </Link>
         </div>
@@ -263,10 +282,10 @@ const ComingSoonPage = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Built by Traders, for Traders
+            Designed for Real Trading Success
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Every feature is designed from real trading experience, educational needs, and common pain points.
+            Every feature is crafted from real trading experience, addressing the core challenges that traders face daily.
           </p>
         </div>
         

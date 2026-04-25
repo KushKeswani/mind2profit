@@ -11,6 +11,7 @@ const ComingSoonPage = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const apiUrl = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features-section');
@@ -34,7 +35,8 @@ const ComingSoonPage = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/waitlist', {
+      const endpoint = apiUrl ? `${apiUrl}/api/waitlist` : "/api/waitlist";
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

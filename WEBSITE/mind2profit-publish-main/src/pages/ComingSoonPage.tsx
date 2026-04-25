@@ -95,7 +95,7 @@ const ComingSoonPage = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <Badge variant="secondary" className="mb-4 bg-purple-100 text-purple-800">
-          🚀 Launching March 2026
+          🚀 Launching June 2026
         </Badge>
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
           Master Trading with
@@ -111,7 +111,7 @@ const ComingSoonPage = () => {
         <div className="mb-12">
           <div className="text-4xl md:text-6xl font-bold text-white mb-4">
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              March 2026
+              June 2026
             </span>
           </div>
           <p className="text-gray-300 text-lg mb-4">

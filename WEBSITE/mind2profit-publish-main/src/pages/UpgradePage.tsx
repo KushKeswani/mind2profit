@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,8 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
 const UpgradePage = () => {
-  const { upgrade } = useAuth();
+  const { upgrade, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/signin");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleUpgrade = async (plan: string) => {
     await upgrade(plan);
@@ -18,13 +25,13 @@ const UpgradePage = () => {
       name: "Starter",
       price: "$29",
       period: "month",
-      description: "Perfect for beginners getting started with trading",
+      description: "For traders building consistency with structured journaling",
       features: [
-        "3 Automatic Backtesting per month",
+        "Trade journal + end-of-day reports",
         "Economic Calendar Access",
-        "Trading Journal",
-        "Email Support",
-        "Basic Strategy Library"
+        "Dashboard core analytics",
+        "Mindset Studio access",
+        "Email Support"
       ],
       popular: false,
       icon: <Target className="h-6 w-6" />
@@ -33,16 +40,16 @@ const UpgradePage = () => {
       name: "Professional",
       price: "$99",
       period: "month",
-      description: "For serious traders who want to scale their operations",
+      description: "For active traders who want complete performance feedback loops",
       features: [
-        "Unlimited AI Strategy Generations",
-        "Unlimited Backtesting",
-        "Real-time Market Data",
+        "Everything in Starter",
+        "AI trade coaching",
+        "Broker sync (Tradovate and more)",
+        "Advanced journal analytics",
+        "Calendar + session planning tools",
+        "Daily reminder automation",
         "Priority Support",
-        "Automated Trading",
-        "Risk Management Tools",
-        "Custom Alerts",
-        "API Access"
+        "Risk Management Templates"
       ],
       popular: true,
       icon: <Zap className="h-6 w-6" />
@@ -51,16 +58,15 @@ const UpgradePage = () => {
       name: "Enterprise",
       price: "$299",
       period: "month",
-      description: "For professional trading firms and institutions",
+      description: "For teams, mentors, and multi-trader operations",
       features: [
         "Everything in Professional",
-        "White-label Solutions",
-        "Dedicated Account Manager",
-        "Custom Strategy Development",
-        "Advanced Analytics",
+        "Team workspaces",
+        "Dedicated success support",
+        "Custom onboarding",
+        "Advanced reporting exports",
         "Multi-account Management",
-        "24/7 Phone Support",
-        "Onboarding Training"
+        "Custom integrations"
       ],
       popular: false,
       icon: <Crown className="h-6 w-6" />
@@ -189,17 +195,17 @@ const UpgradePage = () => {
                 <div className="text-center font-semibold text-white">Professional</div>
                 <div className="text-center font-semibold text-white">Enterprise</div>
                 
-                <div className="text-gray-300">AI Strategy Generations</div>
+                <div className="text-gray-300">Trade Journal</div>
+                <div className="text-center text-green-400">✓</div>
+                <div className="text-center text-green-400">✓</div>
+                <div className="text-center text-green-400">✓</div>
+                
+                <div className="text-gray-300">AI Trade Coaching</div>
                 <div className="text-center text-red-400">✗</div>
-                <div className="text-center text-green-400">Unlimited</div>
-                <div className="text-center text-green-400">Unlimited</div>
+                <div className="text-center text-green-400">✓</div>
+                <div className="text-center text-green-400">✓</div>
                 
-                <div className="text-gray-300">Automatic Backtesting</div>
-                <div className="text-center text-gray-300">3/month</div>
-                <div className="text-center text-green-400">Unlimited</div>
-                <div className="text-center text-green-400">Unlimited</div>
-                
-                <div className="text-gray-300">Real-time Data</div>
+                <div className="text-gray-300">Broker Sync</div>
                 <div className="text-center text-red-400">✗</div>
                 <div className="text-center text-green-400">✓</div>
                 <div className="text-center text-green-400">✓</div>
@@ -209,19 +215,14 @@ const UpgradePage = () => {
                 <div className="text-center text-green-400">✓</div>
                 <div className="text-center text-green-400">✓</div>
                 
-                <div className="text-gray-300">Trading Journal</div>
+                <div className="text-gray-300">Mindset Studio</div>
                 <div className="text-center text-green-400">✓</div>
                 <div className="text-center text-green-400">✓</div>
                 <div className="text-center text-green-400">✓</div>
-                
-                <div className="text-gray-300">Automated Trading</div>
+
+                <div className="text-gray-300">Team Features</div>
                 <div className="text-center text-red-400">✗</div>
-                <div className="text-center text-green-400">✓</div>
-                <div className="text-center text-green-400">✓</div>
-                
-                <div className="text-gray-300">API Access</div>
                 <div className="text-center text-red-400">✗</div>
-                <div className="text-center text-green-400">✓</div>
                 <div className="text-center text-green-400">✓</div>
                 
                 <div className="text-gray-300">Support</div>
@@ -297,9 +298,11 @@ const UpgradePage = () => {
               >
                 Start Free Trial
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 text-lg px-8 py-6">
-                Contact Sales
-              </Button>
+              <a href="mailto:sales@mind2profit.com?subject=Mind2Profit%20Sales%20Inquiry">
+                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 text-lg px-8 py-6">
+                  Contact Sales
+                </Button>
+              </a>
             </div>
           </CardContent>
         </Card>

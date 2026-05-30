@@ -78,6 +78,9 @@ jspm_packages/
 api_keys.json
 secrets.json
 credentials.json
+backend/tradovate_connection.json
+backend/journal_entries.json
+backend/email_reminder_state.json
 
 # Database files
 *.db

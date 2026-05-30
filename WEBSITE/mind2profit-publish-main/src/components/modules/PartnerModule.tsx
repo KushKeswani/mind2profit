@@ -14,7 +14,6 @@ import {
   Target
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { AIChat } from "@/components/ai/AIChat";
 
 export const PartnerModule = () => {
   const [sleepHours, setSleepHours] = useState([7]);
@@ -221,14 +220,6 @@ export const PartnerModule = () => {
         </Card>
       )}
 
-      {/* Prop Firm Chatbot */}
-      <Card className="p-6 mt-6">
-        <h2 className="text-xl font-semibold mb-4">Prop Firm Rules & Advice Chatbot</h2>
-        <div className="mb-2 text-muted-foreground text-sm">Ask anything about prop firm rules, risk management, or get advice for passing your challenge.</div>
-        <AIChat />
-      </Card>
-
-        <AIChat />
       <Card className="p-6">
         <h2 className="text-xl font-semibold mb-4">Recent Conversations</h2>
         <div className="space-y-4">

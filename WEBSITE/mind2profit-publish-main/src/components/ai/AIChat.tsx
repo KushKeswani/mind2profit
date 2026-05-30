@@ -18,7 +18,7 @@ export const AIChat = () => {
     {
       id: "1",
       type: "ai",
-      content: "Hello! I'm your AI trading companion. I'm here to help you with strategy analysis, emotional support, journal reviews, and trading guidance. How can I assist you today?",
+      content: "Hello! I can review your recent journal trades, spot patterns, and coach your risk and psychology process. Ask me anything about your latest trades.",
       timestamp: new Date()
     }
   ]);
@@ -39,7 +39,8 @@ export const AIChat = () => {
     setInput("");
 
     try {
-      const res = await fetch("/api/propFirmChat", {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const res = await fetch(`${apiUrl}/api/trade-chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input })
@@ -159,7 +160,7 @@ export const AIChat = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask about trading strategies, psychology..."
+                placeholder="Ask about recent trades, risk, discipline..."
                 className="flex-1"
               />
               <Button 

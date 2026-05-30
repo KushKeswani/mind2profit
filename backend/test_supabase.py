@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SUPABASE_URL = os.getenv('SUPABASE_URL')
-SUPABASE_KEY = os.getenv('SUPABASE_ANON_KEY')
+SUPABASE_KEY = os.getenv('SUPABASE_ANON_KEY') or os.getenv('SUPABASE_KEY')
 
 print(f"SUPABASE_URL: {SUPABASE_URL}")
 print(f"SUPABASE_KEY: {SUPABASE_KEY[:20]}..." if SUPABASE_KEY else "None")

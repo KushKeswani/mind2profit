@@ -1,40 +1,46 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Brain, TrendingUp, Zap, Shield, Users, BarChart3, Clock, Target } from "lucide-react";
+import { ArrowRight, Brain, TrendingUp, Zap, Shield, Users, BarChart3, Clock, Target, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const LandingPage = () => {
+  const { isAuthenticated, isSubscribed } = useAuth();
+  const ctaPath = isAuthenticated ? (isSubscribed ? "/dashboard" : "/upgrade") : "/signin";
+  const ctaLabel = isAuthenticated ? (isSubscribed ? "Open Dashboard" : "Choose a Plan") : "Sign In to Start";
+  const headerCtaLabel = isAuthenticated ? (isSubscribed ? "Dashboard" : "Upgrade") : "Get Started";
+
   const features = [
     {
       icon: <Brain className="h-6 w-6" />,
-      title: "AI-Powered Strategies",
-      description: "Generate and backtest trading strategies using advanced AI algorithms"
+      title: "AI Trade Coach",
+      description: "Review recent trades and get actionable coaching on risk and execution."
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
-      title: "Automatic Backtesting",
-      description: "Test your strategies against historical data for optimal performance"
+      title: "Performance Dashboard",
+      description: "Track P&L, win rate, expectancy, drawdown, and symbol-level performance."
     },
     {
       icon: <BarChart3 className="h-6 w-6" />,
-      title: "Economic Calendar",
-      description: "Stay informed with real-time economic events and market-moving news"
+      title: "Journal Analytics",
+      description: "Turn daily logs into trends you can act on."
     },
     {
       icon: <Shield className="h-6 w-6" />,
       title: "Trading Journal",
-      description: "Track your trades and analyze your performance over time"
+      description: "Capture trade details and end-of-day reflections in one workflow."
     },
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Automated Trading",
-      description: "Set up automated trading systems with customizable parameters"
+      icon: <Calendar className="h-6 w-6" />,
+      title: "Economic Calendar",
+      description: "Plan around high-impact events and protect capital during volatility."
     },
     {
       icon: <Clock className="h-6 w-6" />,
-      title: "Real-time Data",
-      description: "Access live market data and real-time price updates"
+      title: "Broker Sync",
+      description: "Connect accounts like Tradovate so trades auto-load into your journal."
     }
   ];
 
@@ -42,17 +48,17 @@ const LandingPage = () => {
     {
       name: "Sarah Johnson",
       role: "Professional Trader",
-      content: "Mind2Profit has completely transformed my trading approach. The AI strategies are incredibly accurate."
+      content: "The journal and dashboard finally make my mistakes visible. I can actually improve week to week."
     },
     {
       name: "Mike Chen",
       role: "Day Trader",
-      content: "The automation features have saved me hours every day. Highly recommended!"
+      content: "The economic calendar plus risk reminders helped me stop trading through news spikes."
     },
     {
       name: "Emily Rodriguez",
       role: "Swing Trader",
-      content: "The risk management tools are top-notch. I feel much more confident in my trades."
+      content: "The AI coach gives useful feedback from my own recent trades, not generic advice."
     }
   ];
 
@@ -74,9 +80,9 @@ const LandingPage = () => {
             <Button variant="ghost" className="text-white hover:bg-white/10">
               Pricing
             </Button>
-            <Link to="/upgrade">
+            <Link to={ctaPath}>
               <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-                Get Started
+                {headerCtaLabel}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -87,26 +93,25 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <Badge variant="secondary" className="mb-4 bg-purple-100 text-purple-800">
-          🚀 AI-Powered Trading Companion
+          🚀 Journal-First Trading Platform
         </Badge>
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-          Master the Markets with
+          Improve Trading with
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            {" "}AI Intelligence
+            {" "}Execution Discipline
           </span>
         </h1>
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-          Transform your trading with advanced AI strategies, real-time analytics, and automated systems. 
-          Join thousands of successful traders who trust Mind2Profit.
+          Mind2Profit helps you log trades, learn from data, and sharpen risk control with AI coaching, calendar context, and broker sync.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/upgrade">
+          <Link to={ctaPath}>
             <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-lg px-8 py-6">
-              Start Free Trial
+              {ctaLabel}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
-          <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 text-lg px-8 py-6">
+          <Button size="lg" variant="outline" className="text-white border-white bg-transparent hover:bg-white/10 hover:text-white text-lg px-8 py-6">
             Watch Demo
           </Button>
         </div>
@@ -183,9 +188,9 @@ const LandingPage = () => {
             <p className="text-xl mb-8 opacity-90">
               Join thousands of successful traders and start your journey today.
             </p>
-            <Link to="/upgrade">
+            <Link to={ctaPath}>
               <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
-                Get Started Now
+                {isAuthenticated ? (isSubscribed ? "Open Dashboard" : "Choose a Plan") : "Sign In to Continue"}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>

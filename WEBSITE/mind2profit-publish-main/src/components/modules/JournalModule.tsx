@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,41 +38,25 @@ interface TradeEntry {
   goals?: string;
 }
 
+interface TradovateStatus {
+  isConnected: boolean;
+  isDemo?: boolean;
+  username?: string;
+  accountCount?: number;
+  expirationTime?: string;
+  connectedAt?: string;
+  connectionMode?: string;
+}
+
 export const JournalModule = () => {
-  const [entries, setEntries] = useState<TradeEntry[]>([
-    {
-      id: "1",
-      date: new Date("2024-01-15"),
-      trades: [
-        {
-          symbol: "EURUSD",
-          type: "buy",
-          entry: 1.0850,
-          exit: 1.0920,
-          pnl: 350,
-          riskReward: "1:2.5",
-        }
-      ],
-      reflection: "Perfect entry at support level. Followed the trading plan exactly. Market showed strong bullish momentum after London open.",
-      tags: ["support", "london-open", "trend-following"]
-    },
-    {
-      id: "2",
-      date: new Date("2024-01-14"),
-      trades: [
-        {
-          symbol: "GBPJPY",
-          type: "sell",
-          entry: 185.40,
-          exit: 184.95,
-          pnl: -120,
-          riskReward: "1:2",
-        }
-      ],
-      reflection: "Stop loss hit due to unexpected news release. Should have checked economic calendar before entering.",
-      tags: ["news-impact", "stop-loss", "lesson-learned"]
-    }
-  ]);
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const [entries, setEntries] = useState<TradeEntry[]>([]);
+  const [loadingEntries, setLoadingEntries] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [tradovateStatus, setTradovateStatus] = useState<TradovateStatus>({ isConnected: false });
+  const [tradovateLoading, setTradovateLoading] = useState(false);
+  const [tradovateToken, setTradovateToken] = useState("");
+  const [tradovateIsDemo, setTradovateIsDemo] = useState(true);
 
   const [showAddEntry, setShowAddEntry] = useState(false);
   const [newEntry, setNewEntry] = useState<
@@ -89,6 +73,138 @@ export const JournalModule = () => {
     ugly: '',
     goals: '',
   });
+
+  const loadEntries = async () => {
+    setLoadingEntries(true);
+    setError(null);
+    try {
+      const response = await fetch(`${apiUrl}/api/journal/entries`);
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setError(data.error || "Failed to load journal entries.");
+        setEntries([]);
+      } else {
+        const normalized = (data.entries || []).map((entry: any) => ({
+          ...entry,
+          date: new Date(entry.date),
+        }));
+        setEntries(normalized);
+      }
+    } catch (err) {
+      setError("Failed to connect to journal service.");
+      setEntries([]);
+    } finally {
+      setLoadingEntries(false);
+    }
+  };
+
+  useEffect(() => {
+    loadEntries();
+    loadTradovateStatus();
+  }, []);
+
+  const loadTradovateStatus = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/api/broker/tradovate/status`);
+      const data = await response.json();
+      setTradovateStatus(data);
+    } catch (err) {
+      setTradovateStatus({ isConnected: false });
+    }
+  };
+
+  const connectTradovateWithToken = async () => {
+    setTradovateLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`${apiUrl}/api/broker/tradovate/connect-token`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          accessToken: tradovateToken,
+          isDemo: tradovateIsDemo,
+          username: "manual-token",
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setError(data.error || "Failed to connect Tradovate.");
+      } else {
+        await loadTradovateStatus();
+      }
+    } catch (err) {
+      setError("Failed to connect Tradovate.");
+    } finally {
+      setTradovateLoading(false);
+    }
+  };
+
+  const openTradovateLogin = async (isDemo: boolean) => {
+    try {
+      const response = await fetch(
+        `${apiUrl}/api/broker/tradovate/oauth-url?isDemo=${isDemo ? "true" : "false"}`
+      );
+      const data = await response.json();
+      const url = data?.url || (isDemo ? "https://trader-demo.tradovate.com/oauth" : "https://trader.tradovate.com/oauth");
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch (err) {
+      const fallback = isDemo ? "https://trader-demo.tradovate.com/oauth" : "https://trader.tradovate.com/oauth";
+      window.open(fallback, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const enableTradovateBypass = async () => {
+    setTradovateLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`${apiUrl}/api/broker/tradovate/bypass`, {
+        method: "POST",
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setError(data.error || "Failed to enable bypass mode.");
+      } else {
+        await loadTradovateStatus();
+      }
+    } catch (err) {
+      setError("Failed to enable bypass mode.");
+    } finally {
+      setTradovateLoading(false);
+    }
+  };
+
+  const syncTradovate = async () => {
+    setTradovateLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`${apiUrl}/api/broker/tradovate/sync`, {
+        method: "POST",
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        setError(data.error || "Tradovate sync failed.");
+      } else {
+        await loadTradovateStatus();
+      }
+    } catch (err) {
+      setError("Tradovate sync failed.");
+    } finally {
+      setTradovateLoading(false);
+    }
+  };
+
+  const disconnectTradovate = async () => {
+    setTradovateLoading(true);
+    setError(null);
+    try {
+      await fetch(`${apiUrl}/api/broker/tradovate/disconnect`, { method: "DELETE" });
+      await loadTradovateStatus();
+    } catch (err) {
+      setError("Failed to disconnect Tradovate.");
+    } finally {
+      setTradovateLoading(false);
+    }
+  };
 
   const handleInputChange = (field: keyof TradeEntry, value: any) => {
     setNewEntry((prev) => ({ ...prev, [field]: value }));
@@ -120,34 +236,46 @@ export const JournalModule = () => {
     }));
   };
 
-  const handleSaveEntry = () => {
+  const handleSaveEntry = async () => {
     if (
       newEntry.trades.every(t => t.symbol && t.type && t.entry !== undefined && t.exit !== undefined && t.pnl !== undefined && t.riskReward) &&
       newEntry.reflection &&
       newEntry.date
     ) {
-      setEntries([
-        ...entries,
-        {
-          id: Date.now().toString(),
-          trades: newEntry.trades.map(t => ({
-            symbol: t.symbol,
-            type: t.type,
-            entry: Number(t.entry),
-            exit: Number(t.exit),
-            pnl: Number(t.pnl),
-            riskReward: t.riskReward,
-            time: t.time || '',
-          })),
-          reflection: newEntry.reflection,
-          tags: newEntry.tags || [],
-          date: new Date(newEntry.date),
-          good: newEntry.good,
-          bad: newEntry.bad,
-          ugly: newEntry.ugly,
-          goals: newEntry.goals,
-        },
-      ]);
+      const payload = {
+        trades: newEntry.trades.map(t => ({
+          symbol: t.symbol,
+          type: t.type,
+          entry: Number(t.entry),
+          exit: Number(t.exit),
+          pnl: Number(t.pnl),
+          riskReward: t.riskReward,
+          time: t.time || '',
+        })),
+        reflection: newEntry.reflection,
+        tags: newEntry.tags || [],
+        date: newEntry.date,
+        good: newEntry.good,
+        bad: newEntry.bad,
+        ugly: newEntry.ugly,
+        goals: newEntry.goals,
+      };
+      try {
+        const response = await fetch(`${apiUrl}/api/journal/entries`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await response.json();
+        if (!response.ok || data.error) {
+          setError(data.error || "Failed to save entry.");
+          return;
+        }
+        await loadEntries();
+      } catch (err) {
+        setError("Failed to save entry.");
+        return;
+      }
       setNewEntry({
         trades: [
           { symbol: '', type: 'buy', entry: undefined, exit: undefined, pnl: undefined, riskReward: '', time: '' }
@@ -170,7 +298,7 @@ export const JournalModule = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Trade Journal</h1>
-          <p className="text-muted-foreground">Reflect, learn, and improve your trading</p>
+          <p className="text-muted-foreground">Record, review, and improve your trading execution</p>
         </div>
         <Button 
           onClick={() => setShowAddEntry(!showAddEntry)}
@@ -180,6 +308,87 @@ export const JournalModule = () => {
           Add Trade Entry
         </Button>
       </div>
+      <Card className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-lg font-semibold">Tradovate Connection</h3>
+            <p className="text-sm text-muted-foreground">
+              TradeSyncer-style flow: open Tradovate login first, then connect with token (or use temp bypass).
+            </p>
+          </div>
+          <Badge variant={tradovateStatus.isConnected ? "default" : "secondary"}>
+            {tradovateStatus.isConnected ? "Connected" : "Not Connected"}
+          </Badge>
+        </div>
+
+        {!tradovateStatus.isConnected ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="md:col-span-2 flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                onClick={() => openTradovateLogin(true)}
+              >
+                Open Tradovate Login (Demo)
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => openTradovateLogin(false)}
+              >
+                Open Tradovate Login (Live)
+              </Button>
+            </div>
+            <Input
+              className="md:col-span-2"
+              placeholder="Paste Tradovate access token after sign-in"
+              value={tradovateToken}
+              onChange={(e) => setTradovateToken(e.target.value)}
+            />
+            <div className="md:col-span-2 flex items-center gap-3">
+              <label className="text-sm text-muted-foreground">Environment</label>
+              <select
+                className="p-2 border border-border rounded-md bg-background text-sm"
+                value={tradovateIsDemo ? "demo" : "live"}
+                onChange={(e) => setTradovateIsDemo(e.target.value === "demo")}
+              >
+                <option value="demo">Demo</option>
+                <option value="live">Live</option>
+              </select>
+            </div>
+            <div className="md:col-span-2 flex flex-wrap gap-2">
+              <Button
+                onClick={connectTradovateWithToken}
+                disabled={tradovateLoading || !tradovateToken.trim()}
+                className="bg-gradient-primary"
+              >
+                {tradovateLoading ? "Connecting..." : "Connect With Token"}
+              </Button>
+              <Button variant="secondary" onClick={enableTradovateBypass} disabled={tradovateLoading}>
+                Enable Temp Bypass (Testing)
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Connected as <span className="font-medium text-foreground">{tradovateStatus.username}</span>
+              {" · "}
+              {tradovateStatus.isDemo ? "Demo" : "Live"} environment
+              {" · "}
+              {tradovateStatus.accountCount || 0} account(s)
+              {tradovateStatus.connectionMode ? ` · mode: ${tradovateStatus.connectionMode}` : ""}
+            </p>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={syncTradovate} disabled={tradovateLoading}>
+                {tradovateLoading ? "Syncing..." : "Sync Accounts"}
+              </Button>
+              <Button variant="destructive" onClick={disconnectTradovate} disabled={tradovateLoading}>
+                Disconnect
+              </Button>
+            </div>
+          </div>
+        )}
+      </Card>
+      {error && <Card className="p-4 text-sm text-destructive">{error}</Card>}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="p-6 bg-gradient-secondary">
           <div className="flex items-center justify-between">
@@ -396,6 +605,9 @@ export const JournalModule = () => {
 
       {/* Trade Entries */}
       <div className="space-y-4">
+        {loadingEntries && (
+          <Card className="p-4 text-sm text-muted-foreground">Loading journal entries...</Card>
+        )}
         {entries.map((entry) => (
           <Card key={entry.id} className="p-6 hover:shadow-medium transition-all duration-200">
             <div className="flex items-start justify-between">

@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { 
-  Brain, 
-  TrendingUp, 
-  Bot, 
-  Users, 
-  BookOpen, 
+import {
+  Brain,
+  BookOpen,
   Calendar,
   LayoutDashboard,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -28,39 +26,27 @@ const modules = [
   },
   {
     id: "hypnosis" as ModuleType,
-    name: "Hypnosis Studio",
+    name: "Mindset Studio",
     icon: Brain,
-    description: "Mindset & Psychology"
-  },
-  {
-    id: "strategies" as ModuleType,
-    name: "Strategies",
-    icon: TrendingUp,
-    description: "Profitable Trading Plans"
-  },
-  {
-    id: "automation" as ModuleType,
-    name: "Automation Lab",
-    icon: Bot,
-    description: "Trading Bots & Logic"
-  },
-  {
-    id: "partner" as ModuleType,
-    name: "Virtual Partner",
-    icon: Users,
-    description: "Daily Check-ins"
+    description: "Focus & Discipline"
   },
   {
     id: "journal" as ModuleType,
     name: "Trade Journal",
     icon: BookOpen,
-    description: "Reflect & Learn"
+    description: "Trades, Notes, Review"
   },
   {
     id: "calendar" as ModuleType,
     name: "Economic Calendar",
     icon: Calendar,
-    description: "Events & P&L Tracking"
+    description: "Events & Volatility"
+  },
+  {
+    id: "learn" as ModuleType,
+    name: "Learn",
+    icon: GraduationCap,
+    description: "Terms, Psychology, Risk"
   }
 ];
 
@@ -68,7 +54,7 @@ export const Sidebar = ({ activeModule, onModuleChange }: SidebarProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <aside 
+    <aside
       className={cn(
         "h-full bg-card border-r border-border transition-all duration-300",
         isCollapsed ? "w-16" : "w-64"
@@ -95,7 +81,7 @@ export const Sidebar = ({ activeModule, onModuleChange }: SidebarProps) => {
         {modules.map((module) => {
           const Icon = module.icon;
           const isActive = activeModule === module.id;
-          
+
           return (
             <Button
               key={module.id}
@@ -118,6 +104,7 @@ export const Sidebar = ({ activeModule, onModuleChange }: SidebarProps) => {
           );
         })}
       </nav>
+
     </aside>
   );
 };

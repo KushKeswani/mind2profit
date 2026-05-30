@@ -1,23 +1,16 @@
-import { useState } from "react";
 import { DashboardModule } from "../modules/DashboardModule";
 import { HypnosisModule } from "../modules/HypnosisModule";
-import { StrategiesModule } from "../modules/StrategiesModule";
-import { StrategyResultsPage } from "../modules/StrategyResultsPage";
-import { AutomationModule } from "../modules/AutomationModule";
-import { PartnerModule } from "../modules/PartnerModule";
 import { JournalModule } from "../modules/JournalModule";
 import { CalendarModule } from "../modules/CalendarModule";
+import { LearnModule } from "../modules/LearnModule";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import type { ModuleType } from "../TraderOSLayout";
 
 interface MainContentProps {
   activeModule: ModuleType;
-  onModuleChange?: (module: ModuleType) => void;
 }
 
-export const MainContent = ({ activeModule, onModuleChange }: MainContentProps) => {
-  const [strategyData, setStrategyData] = useState<any>(null);
-
+export const MainContent = ({ activeModule }: MainContentProps) => {
   const renderModule = () => {
     try {
       switch (activeModule) {
@@ -25,28 +18,12 @@ export const MainContent = ({ activeModule, onModuleChange }: MainContentProps) 
           return <DashboardModule />;
         case "hypnosis":
           return <HypnosisModule />;
-        case "strategies":
-          return <StrategiesModule onNavigateToResults={(data) => {
-            console.log('📊 MainContent received strategy data:', data);
-            console.log('🔄 Setting strategy data and changing module...');
-            setStrategyData(data);
-            onModuleChange?.("strategy-results");
-            console.log('✅ Module change completed');
-          }} />;
-        case "strategy-results":
-          console.log('📊 Rendering StrategyResultsPage with strategyData:', strategyData);
-          return <StrategyResultsPage 
-            strategyData={strategyData}
-            onBackToStrategies={() => onModuleChange?.("strategies")} 
-          />;
-        case "automation":
-          return <AutomationModule />;
-        case "partner":
-          return <PartnerModule />;
         case "journal":
           return <JournalModule />;
         case "calendar":
           return <CalendarModule />;
+        case "learn":
+          return <LearnModule />;
         default:
           return <DashboardModule />;
       }

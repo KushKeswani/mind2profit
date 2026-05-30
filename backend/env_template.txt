@@ -6,8 +6,23 @@ SUPABASE_URL=your_supabase_url_here
 SUPABASE_KEY=your_supabase_anon_key_here
 
 # API Keys (Optional - for additional features)
+# Massive (https://massive.com) — primary US macro data (FRED-backed inflation + labor). Query param ?apiKey=
+MASSIVE_API_KEY=your_massive_api_key_here
+# FRED: fallback for /api/economic-data if Massive fails or is unset
 FRED_API_KEY=your_fred_api_key_here
+# Optional: time-scheduled "calendar" (high-impact) events (used if MASSIVE returns no rows and this is set)
 TRADING_ECONOMICS_API_KEY=your_trading_economics_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Tradovate API (required for broker connection + auto-sync)
+# Create API credentials in Tradovate dashboards and keep them secret.
+TRADOVATE_APP_ID=your_tradovate_app_id_here
+TRADOVATE_CID=your_tradovate_cid_here
+TRADOVATE_SEC=your_tradovate_sec_here
+
+# Optional OAuth app settings for "Open Tradovate Login" URL generation
+TRADOVATE_OAUTH_CLIENT_ID=your_tradovate_oauth_client_id_here
+TRADOVATE_OAUTH_REDIRECT_URI=http://localhost:8080/oauth/tradovate/callback
 
 # Google Sheets API (Optional)
 GOOGLE_SHEETS_CREDENTIALS_FILE=path_to_your_credentials.json
@@ -21,3 +36,16 @@ JWT_SECRET=your_jwt_secret_here
 
 # Optional: Logging
 LOG_LEVEL=INFO
+
+# Daily 5PM journal reminder emails
+ENABLE_DAILY_JOURNAL_EMAILS=false
+DAILY_REMINDER_HOUR=17
+DAILY_REMINDER_MINUTE=0
+DAILY_JOURNAL_REMINDER_EMAILS=you@example.com
+MIND2PROFIT_LOGIN_URL=https://mind2profit.com
+
+# SMTP settings (example: Gmail SMTP with app password)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SENDER_EMAIL=your_sender_email@gmail.com
+SENDER_PASSWORD=your_app_password

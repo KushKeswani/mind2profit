@@ -124,8 +124,8 @@ export const HypnosisModule: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Hypnosis Studio</h1>
-          <p className="text-muted-foreground">Transform your trading mindset with personalized affirmations</p>
+          <h1 className="text-3xl font-bold text-foreground">Mindset Studio</h1>
+          <p className="text-muted-foreground">Build trading discipline with personalized affirmations</p>
         </div>
         <Badge className="bg-gradient-primary">
           <Brain className="h-4 w-4 mr-2" />

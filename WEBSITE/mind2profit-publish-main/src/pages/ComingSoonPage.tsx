@@ -98,13 +98,13 @@ const ComingSoonPage = () => {
           🚀 Launching June 2026
         </Badge>
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-          Master Trading with
+          Build Consistency with
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            {" "}AI-Powered Tools
+            {" "}Journal-First Tools
           </span>
         </h1>
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-          Transform your trading with Mind2Profit's comprehensive suite of AI strategy tools, psychology coaching, and educational resources. Join thousands of traders who are already on the waitlist.
+          Mind2Profit helps traders improve execution with trade journaling, broker sync, AI performance coaching, economic calendar context, and practical risk-management learning.
         </p>
         
         {/* Enhanced Countdown */}
@@ -120,15 +120,15 @@ const ComingSoonPage = () => {
           <div className="flex justify-center space-x-4 text-sm text-gray-400">
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>AI Strategy Generation</span>
+              <span>Trade Journal + Analytics</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>Psychology Coaching</span>
+              <span>AI Trade Coaching</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>Advanced Backtesting</span>
+              <span>Tradovate Sync + Calendar</span>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ const ComingSoonPage = () => {
             What's Coming
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            A comprehensive suite of educational tools and trading resources designed to elevate your trading journey.
+            The exact tools we are shipping first for disciplined, repeatable execution.
           </p>
         </div>
         
@@ -188,12 +188,12 @@ const ComingSoonPage = () => {
                 <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-white">AI-Powered Strategies</CardTitle>
+                <CardTitle className="text-white">AI Trade Coach</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Generate and backtest trading strategies using advanced AI algorithms.
+                Ask questions about your recent trades and get process-first coaching on risk and execution.
               </CardDescription>
             </CardContent>
           </Card>
@@ -209,7 +209,7 @@ const ComingSoonPage = () => {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Comprehensive learning resources covering technical analysis, risk management, and trading psychology.
+                Structured lessons on trading terms, psychology, and practical risk-management habits.
               </CardDescription>
             </CardContent>
           </Card>
@@ -225,7 +225,7 @@ const ComingSoonPage = () => {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Stay informed with real-time economic events and market-moving news.
+                Track high-impact events and plan your risk around volatility windows.
               </CardDescription>
             </CardContent>
           </Card>
@@ -241,7 +241,7 @@ const ComingSoonPage = () => {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Track your trades, analyze performance, and improve your process.
+                Log trades, review your day, and track win-rate, expectancy, and drawdown trends.
               </CardDescription>
             </CardContent>
           </Card>
@@ -252,12 +252,12 @@ const ComingSoonPage = () => {
                 <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-white">Automated Trading</CardTitle>
+                <CardTitle className="text-white">Broker Sync</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Execute trades automatically based on your predefined strategies.
+                Connect brokerage accounts so recent trades flow into your journal automatically.
               </CardDescription>
             </CardContent>
           </Card>
@@ -268,12 +268,12 @@ const ComingSoonPage = () => {
                 <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-white">Trading Psychology Tools</CardTitle>
+                <CardTitle className="text-white">Mindset Studio</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
               <CardDescription className="text-gray-300">
-                Master your mindset with guided psychology tools and affirmations.
+                Reinforce discipline with guided mindset tools and end-of-day reflection prompts.
               </CardDescription>
             </CardContent>
           </Card>

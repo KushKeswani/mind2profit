@@ -25,14 +25,22 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             {/* Public routes */}
-            <Route path="/" element={<ComingSoonPage />} />
+            <Route path="/coming-soon" element={<ComingSoonPage />} />
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/upgrade" element={<UpgradePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/beta" element={<BetaTesterPage />} />
             <Route path="/science-hypnosis" element={<ScienceHypnosisPage />} />
             
-            {/* Protected routes - only accessible to subscribed users */}
+            {/* Main application - now the default route */}
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Index />
+                </ProtectedRoute>
+              }
+            />
             <Route 
               path="/dashboard" 
               element={

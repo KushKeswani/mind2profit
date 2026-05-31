@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TraderOS Design System - Professional Trading Interface */
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background: 0 0% 100%;
+    --background-secondary: 0 0% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-secondary: 0 0% 98%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Navy Blue Theme */
+    --primary: 217 91% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 45%;
+    --primary-dark: 217 91% 25%;
+
+    /* Secondary system */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted system */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent system */
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 35%;
+
+    /* Trading specific colors */
+    --profit: 142 76% 36%;
+    --loss: 0 84% 60%;
+    --neutral: 215 16% 47%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%), hsl(217 91% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 40% 98%), hsl(210 40% 94%));
+    --gradient-trading: linear-gradient(135deg, hsl(217 91% 35%), hsl(217 91% 25%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(217 91% 35% / 0.08);
+    --shadow-medium: 0 4px 16px hsl(217 91% 35% / 0.12);
+    --shadow-strong: 0 8px 32px hsl(217 91% 35% / 0.16);
+
+    /* Animations */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Core backgrounds */
+    --background: 222 47% 6%;
+    --background-secondary: 222 47% 8%;
+    --foreground: 0 0% 98%;
+
+    /* Card system */
+    --card: 222 47% 8%;
+    --card-secondary: 222 47% 10%;
+    --card-foreground: 0 0% 98%;
+
+    /* Popover system */
+    --popover: 222 47% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Navy Blue Theme (adjusted for dark) */
+    --primary: 217 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 65%;
+    --primary-dark: 217 91% 45%;
+
+    /* Secondary system */
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted system */
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 16% 65%;
+
+    /* Accent system */
+    --accent: 222 47% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Status colors */
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input */
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 217 91% 55%;
+
+    /* Trading specific colors */
+    --profit: 142 76% 45%;
+    --loss: 0 84% 70%;
+    --neutral: 215 16% 65%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 55%), hsl(217 91% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(222 47% 8%), hsl(222 47% 12%));
+    --gradient-trading: linear-gradient(135deg, hsl(217 91% 55%), hsl(217 91% 45%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(222 47% 6% / 0.3);
+    --shadow-medium: 0 4px 16px hsl(222 47% 6% / 0.4);
+    --shadow-strong: 0 8px 32px hsl(222 47% 6% / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
